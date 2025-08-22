@@ -1,0 +1,29 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "repomapper"
+version = "0.1.0"
+description = "Map a source repository into a single text: tree view + concatenated file contents."
+readme = "README.md"
+license = { text = "CC0-1.0" }
+authors = [{ name = "jrmsls", email = "jrmsls@users.noreply.github.com" }]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+gitignore = ["pathspec>=0.12"]
+clipboard = ["pyperclip>=1.8"]
+
+[project.scripts]
+repomapper = "repomapper.cli:main"
+
+[tool.hatch.build.targets.sdist]
+include = [
+  "src/repomapper",
+  "tests",
+  "README.md",
+  "pyproject.toml",
+  "LICENSE",
+]
